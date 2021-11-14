@@ -1,0 +1,21 @@
+.container{
+    height: 80rem;
+}
+.post-image{
+    background: url("../Home/Blog Banner.jpg") no-repeat center;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    margin:25px 0px;
+    border-radius: 7px;
+}
+input{
+    width: 100%;
+    background-color: rgb(211, 192, 163);
+}
+textarea{
+    background-color: rgb(211, 192, 163);
+    border:2px solid black;
+    outline: wheat;
+    border-radius: 4px;
+}

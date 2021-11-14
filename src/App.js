@@ -1,25 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+ import React from 'react'
+ import { useState } from 'react';
+import NavBar from './frontend/Navbar/NavBar'
+import {
+  BrowserRouter as Router,
+  
+  Route,Switch,
+ 
+  
+} from "react-router-dom";
+import Login from './frontend/Login/Login';
+import Register from './frontend/register/Register';
+import About from './frontend/About/About';
+import Alert from './frontend/Alert';
+import Home from './frontend/Home/Home';
+import NewPost from './frontend/NewPost/NewPost';
+ 
+ const App = () => {
+   const [alert, setAlert] = useState(null);
 
-function App() {
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    },message===null?0:1500);
+    
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+     <>
+     <Router>
+       
+      
+          <NavBar />
+           
+          <div>
+     <Alert alert={alert}  />
+            <Switch>
 
-export default App;
+              <Route exact path="/login">
+               <Login showAlert={showAlert}/>
+              </Route>
+              <Route exact path="/">
+               <Login showAlert={showAlert}/>
+              </Route>
+              
+              <Route exact path="/write">
+              <NewPost/>
+              </Route>
+
+              <Route exact path="/home">
+              <Home showAlert={showAlert}/>
+              </Route>
+              <Route exact path="/about">
+               <About showAlert={showAlert}/>
+              </Route>
+              <Route exact path="/register">
+               <Register showAlert={showAlert}/>
+              </Route>
+           
+            </Switch>
+          </div>
+        </Router>
+  
+    </>
+    
+   )
+ }
+ 
+ export default App
+ 

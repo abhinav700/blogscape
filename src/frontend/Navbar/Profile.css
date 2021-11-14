@@ -1,0 +1,12 @@
+.root-class {
+  height: 40px;
+  width: 45px;
+  border-radius: 38px;
+   background: url("./profile pic.jpg") center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.root-class:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}

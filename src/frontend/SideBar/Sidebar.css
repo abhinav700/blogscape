@@ -1,0 +1,48 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.sidebar {
+  flex: 3;
+  background-color: rgb(204, 191, 191);
+  width: 300px;
+  margin-right: 0;
+ height: auto;
+
+  border-radius: 8px;
+}
+h4 {
+    text-align: center;
+}
+.profile-pic {
+    background: url(./profile\ pic.jpg) no-repeat center;
+    background-size: cover;
+  width: 90%;
+  height: 30%;
+  margin: auto;
+}
+.about-text {
+    margin: auto;
+  text-align: center;
+}
+.category {
+    margin: auto;
+    margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.category-item {
+  background-color: rgb(143, 139, 139);
+  width: fit-content;
+  border-radius: 7px;
+  padding: 4px 7px;
+  margin: 10px auto;
+  display: inline;
+}
+
+.container{
+    min-height: 42rem;
+    max-height: fit-content;
+}
