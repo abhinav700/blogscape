@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css"
+import {useEffect} from "react"
+ 
 const Login = (props) => {
+  useEffect(() => {
+    localStorage.removeItem("token")
     
+  }, [])
+    
+   
     const handlePasswordClick = () => {
       setShowPassword(!showPassword);
     };
@@ -48,13 +55,13 @@ const Login = (props) => {
                   <form onSubmit={handleSubmit} className="login-form" autoComplete="off">
                       <div className="input-item">
                         Email:<br/>
-                        <input onChange={onChange}  type="text" name="email" placeholder="xyz@blogScape.com" />
+                        <input className="login-input" onChange={onChange}  type="text" name="email" placeholder="xyz@blogScape.com" />
 
                       </div>
                       <div className="input-item">
                         Password:<br/>
                     
-                        <input onChange={onChange}  
+                        <input className="login-input" onChange={onChange}  
                         name="password"
                          
                         type={`${showPassword ? "text" : "password"}`}
@@ -63,7 +70,7 @@ const Login = (props) => {
                    
                         
                       </div>
-                      <div className="icons d-flex">
+                      <div className="icons">
                       <i
               onClick={handlePasswordClick}
               className={`fas fa-eye-slash hidePassword my-3 mx-2 ${
@@ -79,8 +86,8 @@ const Login = (props) => {
                       </div>
                       <div className="">
 
-                      <button type="submit" className="btn form-submit" >Submit</button>
                       </div>
+                      <button type="submit mx-4" className="btn login-submit form-submit" >Submit</button>
                   </form>
              </div>
             </div>

@@ -5,7 +5,7 @@
 
 .sidebar {
   flex: 3;
-  background-color: rgb(204, 191, 191);
+  background-color: rgb(248, 248, 248);
   width: 300px;
   margin-right: 0;
  height: auto;
@@ -34,7 +34,7 @@ h4 {
   justify-content: center;
 }
 .category-item {
-  background-color: rgb(143, 139, 139);
+  background-color: rgb(216, 215, 215);
   width: fit-content;
   border-radius: 7px;
   padding: 4px 7px;

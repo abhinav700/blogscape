@@ -14,6 +14,35 @@ router.get("/fetchallblogs", fetchuser, async (req, res) => {
   }
 });
 
+
+
+
+// Route to get all the blogs using GET request
+router.get(
+  "/getPost/:id",
+  fetchuser,
+
+  async (req, res) => {
+ 
+
+    //fINd the blog to be deleted and delete it
+    let blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      res.status(404).send("not found");
+    }
+
+    //ALlow deletion only if user owns this blog   
+    if (blog.user.toString() !== req.user.id) {
+      return res.status(401).send("Not Allowed");
+    }
+
+    res.json(blog)
+  }
+);
+
+
+
+
 //Adding a new  blog using  /addblog
 
 router.post(
@@ -22,23 +51,24 @@ router.post(
   [
     body("title", "enter a valid title").isLength({ min: 3 }),
     body(
-      "description",
-      "description should have atleast 5 characters"
+      "content",
+      "content should have atleast 5 characters"
     ).isLength({
       min: 5,
     }),
   ],
   async (req, res) => {
     try {
-      const { title, description, tag } = req.body;
+      const { title, content, category } = req.body;
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
       const blog = new Blog({
         title,
-        description,
-        tag,
+        content,
+        category,
+     
         user: req.user.id,
       });
       const savedblog = await blog.save();
@@ -53,18 +83,19 @@ router.put(
   fetchuser,
 
   async (req, res) => {
-    const { title, description, tag } = req.body;
+    const { title, content, category } = req.body;
 
     const newblog = {};
     if (title) {
       newblog.title = title;
     }
-    if (description) {
-      newblog.description = description;
+    if (content) {
+      newblog.content = content;
     }
-    if (tag) {
-      newblog.tag = tag;
+    if (category) {
+      newblog.category = category;
     }
+     
 
     //fINd the blog to be updated and update it
 
@@ -92,7 +123,7 @@ router.delete(
   fetchuser,
 
   async (req, res) => {
-    const { title, description, tag } = req.body;
+    const { title, content, category } = req.body;
 
     //fINd the blog to be deleted and delete it
     let blog = await Blog.findById(req.params.id);

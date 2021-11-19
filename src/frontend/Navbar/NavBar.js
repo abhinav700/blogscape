@@ -13,6 +13,8 @@ const NavBar = () => {
     history.push("login ")
       
   }
+  
+
     return (
         <>
          <nav  style={{position:"sticky",top:"0",zIndex:"2"}} className="navbar navbar-expand-lg navbar-dark   bg-dark">
@@ -24,7 +26,7 @@ const NavBar = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
+          {localStorage.getItem("token")&&location!=="/"&&location!=="/login"&&(<Link className="nav-link active" aria-current="page" to="/home">Home</Link>)}
         </li>
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/about">About</Link>
@@ -40,7 +42,9 @@ const NavBar = () => {
 
       {localStorage.getItem("token")&&location!=="/"&&location!=="/login"?(
         <>
+
       <Link to="/write"><i style={{color:"white",fontSize:"1.4rem",margin:"auto auto"}} className="mx-3 my-2 fas fa-pencil-alt"></i></Link>
+      
       <ProfilePic/>
      <Link to="/login"><button type="button" className="mx-2 btn btn-primary" onClick={handleLogout} >Logout</button></Link>
         </>)

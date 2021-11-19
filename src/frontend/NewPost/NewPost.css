@@ -1,6 +1,9 @@
 .container{
     height: 80rem;
 }
+#file{
+    background-color: rgb(255, 255, 255);
+}
 .post-image{
     background: url("../Home/Blog Banner.jpg") no-repeat center;
     background-size: cover;
@@ -18,4 +21,15 @@ textarea{
     border:2px solid black;
     outline: wheat;
     border-radius: 4px;
+}
+#file{
+    background-color: blanchedalmond;
+    color: black;
+    width: fit-content;
+}
+input#file{
+    background-color: blanchedalmond;
+    color: black;
+    width: fit-content;
+
 }

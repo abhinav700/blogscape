@@ -14,8 +14,12 @@ import About from './frontend/About/About';
 import Alert from './frontend/Alert';
 import Home from './frontend/Home/Home';
 import NewPost from './frontend/NewPost/NewPost';
- 
+import BlogState from './Context/Blogs/BlogState';
+import ViewPost from './frontend/ViewPost/ViewPost';
+ import {useEffect} from "react"
  const App = () => {
+ 
+   
    const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -30,6 +34,7 @@ import NewPost from './frontend/NewPost/NewPost';
   };
   return (
      <>
+     <BlogState>
      <Router>
        
       
@@ -59,11 +64,15 @@ import NewPost from './frontend/NewPost/NewPost';
               <Route exact path="/register">
                <Register showAlert={showAlert}/>
               </Route>
+              <Route exact path={`/viewPost/:id`}>
+               <ViewPost/>
+              </Route>
            
             </Switch>
           </div>
         </Router>
   
+     </BlogState>
     </>
     
    )
